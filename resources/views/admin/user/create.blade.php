@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('contetn')
+@section('content')
     <!-- begin::main content -->
     <main class="main-content">
         @include('admin.layouts.error')

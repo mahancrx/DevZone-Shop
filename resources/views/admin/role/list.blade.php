@@ -7,6 +7,6 @@
                 <div>{{session('message')}}</div>
             </div>
         @endif
-    <livewire:admin.user.user />
+         <livewire:admin.role.role />
     </main>
 @endsection

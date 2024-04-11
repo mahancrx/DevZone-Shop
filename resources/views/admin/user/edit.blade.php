@@ -1,12 +1,12 @@
 @extends('admin.layouts.master')
-@section('contetn')
+@section('content')
     <!-- begin::main content -->
     <main class="main-content">
         @include('admin.layouts.error')
         <div class="card">
             <div class="card-body">
                 <div class="container">
-                    <h6 class="card-title">ایجاد کاربر</h6>
+                    <h6 class="card-title">ویرایش کاربر</h6>
                     <form method="POST" action="{{route('user.update', $user->id)}}" enctype="multipart/form-data">
                         @csrf
                         @method('put')
