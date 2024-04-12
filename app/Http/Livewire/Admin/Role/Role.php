@@ -11,6 +11,22 @@ class Role extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $search;
+    protected $listeners = [
+        'destroyRole',
+        'refreshRole' => '$refresh'
+    ];
+
+    public function deleteRole($id)
+    {
+        $this->dispatchBrowserEvent('deleteRole', ['id'=>$id]);
+    }
+
+    public function destroyRole($id)
+    {
+        \Spatie\Permission\Models\Role::destroy($id);
+        $this->emit('refreshRole');
+    }
+
     public function render()
     {
         $roles = \Spatie\Permission\Models\Role::query()->

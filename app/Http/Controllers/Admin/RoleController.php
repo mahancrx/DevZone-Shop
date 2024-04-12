@@ -50,7 +50,7 @@ class RoleController extends Controller
     public function edit(string $id)
     {
         $role = Role::query()->find($id);
-        return view('admin.role.edit', compact($role));
+        return view('admin.role.edit', compact('role'));
     }
 
     /**
