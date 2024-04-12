@@ -30,6 +30,8 @@ Route::middleware('auth')->prefix('/dashboard')->group(function () {
 
     Route::resource('/user', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('/role', \App\Http\Controllers\Admin\RoleController::class);
+    Route::get('/user_role{id}', [\App\Http\Controllers\Admin\UserController::class, 'userRole'])->name('user.role');
+    Route::post('/store_user_role{id}', [\App\Http\Controllers\Admin\UserController::class, 'storeUserRole'])->name('store.user.role');
 });
 
 require __DIR__.'/auth.php';

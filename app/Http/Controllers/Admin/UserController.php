@@ -7,6 +7,7 @@ use App\Http\Requests\createUserRequest;
 use App\Http\Requests\updateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -68,5 +69,20 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function userRole($id)
+    {
+        $user = User::query()->find($id);
+        $roles = Role::query()->get();
+        return view('admin.role.user_role', compact('user', 'roles'));
+    }
+
+    public function storeUserRole(Request $request , $id)
+    {
+        $user = User::query()->find($id);
+        $user->syncRoles($request->roles);
+        return redirect()->route('user.index')->with('message', 'نقش به کاربر متصل شد');
+
     }
 }

@@ -29,6 +29,8 @@
                     <li><a href="{{route('user.index')}}">لیست کاربران</a></li>
                 </ul>
             </li>
+            @hasanyrole('برنامه نویس')
+            @hasanyrole('مدیر')
             <li>
                 <a href="#">نقش ها</a>
                 <ul>
@@ -36,6 +38,8 @@
                     <li><a href="{{route('role.index')}}">لیست نقش ها</a></li>
                 </ul>
             </li>
+            @endhasanyrole
+            @endhasanyrole
         </ul>
     </div>
 </div>
