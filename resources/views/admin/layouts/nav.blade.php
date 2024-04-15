@@ -6,6 +6,11 @@
                     <i class="icon ti-user"></i>
                 </a>
             </li>
+            <li data-toggle="tooltip" title="صفحه فروشگاه">
+                <a href="#store" title=" صفحه فروشگاه">
+                    <i class="icon ti-shopping-cart-full"></i>
+                </a>
+            </li>
         </ul>
         <ul>
             <li data-toggle="tooltip" title="ویرایش پروفایل">
@@ -36,6 +41,16 @@
                     <li><a href="{{route('role.index')}}">لیست نقش ها</a></li>
                 </ul>
             </li>
+        </ul>
+        <ul id="store">
+            <li>
+                <a href="#">دسته بندی ها</a>
+                <ul>
+                    <li><a href="{{route('category.create')}}">ایجاد دسته بندی</a></li>
+                    <li><a href="{{route('category.index')}}">لیست دسته بندی ها</a></li>
+                </ul>
+            </li>
+
         </ul>
     </div>
 </div>
