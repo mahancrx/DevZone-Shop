@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -21,8 +22,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
-
+        $categories = Category::getCategories();
+        return view('admin.category.create', compact('categories'));
     }
 
     /**
@@ -47,7 +48,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admin.category.edit');
+        $categories = Category::getCategories();
+        $category = Category::findOrFail($id);
+        return view('admin.category.edit', compact('category', 'categories'));
 
     }
 
@@ -56,7 +59,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        Category::updateCategory($request, $category);
+        return redirect()->route('category.index')->with('message', 'دسته بندی ویرایش شد');
     }
 
     /**

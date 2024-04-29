@@ -26,8 +26,12 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">دسته بندی پدر</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control text-left"  dir="rtl"
-                                       name="parent_id">
+                                <select name="parent_id" class="form-select">
+                                    <option selected value="0">ندارد</option>
+                                    @foreach($categories as $key => $value)
+                                        <option value="{{$key}}">{{$value}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -46,4 +50,14 @@
             </div>
         </div>
     </main>
+@endsection
+@section('scripts')
+    <script>
+        $('select').select2({
+            dir: "rtl",
+            dropdownAutoWidth: true,
+            $dropdownParent: $('#parent')
+        })
+        $('.form-select').select2();
+    </script>
 @endsection

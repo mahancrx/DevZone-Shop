@@ -13,6 +13,7 @@
     <link rel="stylesheet" href={{url("panel/vendors/vmap/jqvmap.min.css")}}>
     <link rel="stylesheet" href={{url("panel/assets/css/app.css")}} type="text/css">
     <link rel="stylesheet" href={{url("panel/plugins/sweet_alert/sweetalert2.min.css")}} type="text/css">
+    <link rel="stylesheet" href={{url("panel/vendors/select2/css/select2.min.css")}}>
     @livewireStyles
 </head>
 <body class="small-navigation">

@@ -32,7 +32,7 @@
                                 </figure>
                             </td>
                             <td class="text-center align-middle">{{$category->title}}</td>
-                            <td class="text-center align-middle">{{$category->parent_id}}</td>
+                            <td class="text-center align-middle">{{$category->parentCategory->title}}</td>
                             <td class="text-center align-middle">{{$category->etitle}}</td>
                             <td class="text-center align-middle">{{$category->slug}}</td>
                             <td class="text-center align-middle">
