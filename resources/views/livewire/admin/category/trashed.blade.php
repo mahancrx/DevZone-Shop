@@ -8,7 +8,7 @@
                         <input type="text" class="form-control text-left" dir="rtl" wire:model="search">
                     </div>
                     <div class="col-sm-2">
-                        <a class="btn btn-warning" href="{{route('category.trashed')}}">دسته بندی های حذف شده</a>
+                        <a class="btn btn-success" href="{{route('category.index')}}">بازگشت به دسته بندی ها</a>
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
@@ -20,7 +20,7 @@
                         <th class="text-center align-middle text-primary">دسته پدر</th>
                         <th class="text-center align-middle text-primary">نام انگلیسی</th>
                         <th class="text-center align-middle text-primary">اسلاگ</th>
-                        <th class="text-center align-middle text-primary">ویرایش</th>
+                        <th class="text-center align-middle text-primary">بازگردانی</th>
                         <th class="text-center align-middle text-primary">حذف</th>
                         <th class="text-center align-middle text-primary">تاریخ ایجاد</th>
                     </tr>
@@ -39,12 +39,12 @@
                             <td class="text-center align-middle">{{$category->etitle}}</td>
                             <td class="text-center align-middle">{{$category->slug}}</td>
                             <td class="text-center align-middle">
-                                <a class="btn btn-outline-info" href="{{route('category.edit', $category->id)}}">
-                                    ویرایش
+                                <a class="btn btn-outline-info" wire:click="restoreCategory({{$category->id}})">
+                                    بازگردانی
                                 </a>
                             </td>
                             <td class="text-center align-middle">
-                                <a class="btn btn-outline-dark"  wire:click="deleteCategory({{$category->id}})">
+                                <a class="btn btn-outline-dark" wire:click="forceDeleteCategory({{$category->id}})">
                                     حذف
                                 </a>
                             </td>
@@ -62,7 +62,7 @@
 </div>
 @section('scripts')
     <script>
-        window.addEventListener('deleteCategory', event => {
+        window.addEventListener('forceDeleteCategory', event => {
             Swal.fire({
                 title: "آیا میخواهید این دسته بندی را پاک کنید",
                 text: "با پاک کردن این دسته بندی دیگر دسترسی به آن امکان پذیر نیست",
@@ -74,7 +74,7 @@
                 cancelButtonText: "نه پاکش نکن :)"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    livewire.emit('destroyCategory', event.detail.id)
+                    livewire.emit('forceDestroy', event.detail.id)
                     Swal.fire({
                         title: "پاک شد !",
                         text: "این دسته بندی پاک شد",

@@ -33,6 +33,7 @@ Route::middleware('auth')->prefix('/dashboard')->group(function () {
     Route::get('/user_role{id}', [\App\Http\Controllers\Admin\UserController::class, 'userRole'])->name('user.role');
     Route::post('/store_user_role{id}', [\App\Http\Controllers\Admin\UserController::class, 'storeUserRole'])->name('store.user.role');
     Route::resource('/category', \App\Http\Controllers\Admin\CategoryController::class);
+    Route::get('category_trashed', [\App\Http\Controllers\Admin\CategoryController::class, 'trashed'])->name('category.trashed');
 
 });
 

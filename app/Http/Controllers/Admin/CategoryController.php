@@ -71,4 +71,9 @@ class CategoryController extends Controller
     {
         //
     }
+
+    public function trashed()
+    {
+        return view('admin.category.trashed_list');
+    }
 }
